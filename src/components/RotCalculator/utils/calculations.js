@@ -72,4 +72,4 @@ export const beraknaResultat = (formData) => {
         maxRot: MAX_ROT,
         momssats: MOMS - 1
     };
-}; 
+};

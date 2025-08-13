@@ -67,4 +67,4 @@ export const VärmepumpsVäljare = ({ state, updateState }) => {
             </div>
         </div>
     );
-}; 
+};

@@ -352,4 +352,4 @@ export const generatePDF = (data) => {
 
     // Spara PDF
     doc.save(`kostnadsforslag_${offertnummer}.pdf`);
-}; 
+};

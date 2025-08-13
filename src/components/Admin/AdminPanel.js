@@ -357,4 +357,4 @@ export const AdminPanel = ({ onClose }) => {
             </div>
         </div>
     );
-}; 
+};

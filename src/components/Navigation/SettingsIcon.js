@@ -27,4 +27,4 @@ export const SettingsIcon = ({ onClick }) => (
             />
         </svg>
     </button>
-); 
+);

@@ -112,4 +112,4 @@ export const KundSektion = ({ state, updateState }) => {
             </div>
         </div>
     );
-}; 
+};

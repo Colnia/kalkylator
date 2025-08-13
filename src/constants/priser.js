@@ -326,4 +326,4 @@ export const KALKYLATOR_TYPER = {
     LUFT_VATTEN: 'luft-vatten',
     BERGVÄRME: 'bergvärme',
     REPARATION: 'reparation'
-}; 
+};

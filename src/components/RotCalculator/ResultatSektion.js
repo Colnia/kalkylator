@@ -72,4 +72,4 @@ export const ResultatSektion = ({ resultat }) => {
             </div>
         </div>
     );
-}; 
+};

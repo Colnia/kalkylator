@@ -80,4 +80,4 @@ export const InputSektion = ({ formData, onChange, onBerakna, error }) => {
             </div>
         </div>
     );
-}; 
+};

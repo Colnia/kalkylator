@@ -142,4 +142,4 @@ export const LuftLuftSektion = ({ state, updateState }) => {
             </div>
         </div>
     );
-}; 
+};

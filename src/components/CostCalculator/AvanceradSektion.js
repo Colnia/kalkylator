@@ -109,4 +109,4 @@ export const AvanceradSektion = ({ state, updateState }) => {
             </div>
         </div>
     );
-}; 
+};

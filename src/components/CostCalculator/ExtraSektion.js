@@ -143,4 +143,4 @@ export const ExtraSektion = ({ state, updateState }) => {
             </div>
         </div>
     );
-}; 
+};

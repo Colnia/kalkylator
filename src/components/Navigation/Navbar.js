@@ -49,4 +49,4 @@ export const Navbar = ({ onSettingsClick }) => {
             </div>
         </nav>
     );
-}; 
+};

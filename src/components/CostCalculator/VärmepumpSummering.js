@@ -117,4 +117,4 @@ export const VärmepumpSummering = ({ state }) => {
             extraKomponenter={extraKomponenter}
         />
     );
-}; 
+};

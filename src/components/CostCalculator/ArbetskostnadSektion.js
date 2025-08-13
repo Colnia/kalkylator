@@ -54,4 +54,4 @@ export const ArbetskostnadSektion = ({ state, updateState }) => {
             </div>
         </div>
     );
-}; 
+};

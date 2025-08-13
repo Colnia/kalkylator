@@ -48,4 +48,4 @@ export const VARMEPUMPAR = {
 export const INSTALLATION_PRIS = {
     STANDARD: 4500,
     KOMPLEX: 6500
-}; 
+};

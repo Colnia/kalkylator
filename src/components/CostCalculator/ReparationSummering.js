@@ -130,4 +130,4 @@ export const ReparationSummering = ({ state }) => {
             extraKomponenter={extraKomponenter}
         />
     );
-}; 
+};

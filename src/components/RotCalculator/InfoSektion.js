@@ -44,4 +44,4 @@ export const InfoSektion = ({ pumpTyp }) => {
             </div>
         </div>
     );
-}; 
+};

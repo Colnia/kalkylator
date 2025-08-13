@@ -36,4 +36,4 @@ export const BERAKNINGS_METODER = {
         namn: 'Pris till kund inkl. moms före ROT',
         placeholder: 'Ange pris inkl. moms'
     }
-}; 
+};

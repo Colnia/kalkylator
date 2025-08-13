@@ -88,4 +88,4 @@ export const INSTALLATIONS_MATERIAL = {
             enhet: 'meter'
         }
     }
-}; 
+};

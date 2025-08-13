@@ -165,4 +165,4 @@ export const KundInformation = ({ state, updateState }) => {
             </p>
         </div>
     );
-}; 
+};

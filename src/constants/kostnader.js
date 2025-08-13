@@ -37,4 +37,4 @@ export const MAX_ROT = 50000; // Max ROT-avdrag per person och år
 export const MOMS = 0.25; // 25% moms 
 
 // Lägg till materialpåslag
-export const PÅSLAG = 1.42; // 42% påslag på material 
+export const PÅSLAG = 1.42; // 42% påslag på material

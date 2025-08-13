@@ -24,4 +24,4 @@ export const PLACERINGAR = {
     VÄGG: 'vägg',
     BALKONG: 'balkong',
     TAK: 'tak'
-}; 
+};

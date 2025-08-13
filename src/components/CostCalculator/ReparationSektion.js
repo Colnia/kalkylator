@@ -97,4 +97,4 @@ export const ReparationSektion = ({ state, updateState }) => {
             </div>
         </div>
     );
-}; 
+};

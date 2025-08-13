@@ -6,4 +6,4 @@ export const HistoryView = () => {
             <h2>Historik kommer snart...</h2>
         </div>
     );
-}; 
+};
