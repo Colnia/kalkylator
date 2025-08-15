@@ -7,30 +7,11 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { VärmepumpsVäljare } from "./värmepumps-väljare"
-import { Thermometer, Settings, Wrench } from "lucide-react"
+import { INSTALLATION_TYPER, VÄGG_TYPER, PLACERINGAR } from "@/lib/constants"
 
 interface VärmepumpSektionProps {
   state: any
   updateState: (key: string, value: any) => void
-}
-
-const INSTALLATION_TYPER = {
-  STANDARD: "standard",
-  UTBYTE: "utbyte",
-  KOMPLEX: "komplex",
-}
-
-const VÄGG_TYPER = {
-  TRÄ: "trä",
-  TEGEL: "tegel",
-  BETONG: "betong",
-}
-
-const PLACERINGAR = {
-  MARK: "mark",
-  VÄGG: "vägg",
-  BALKONG: "balkong",
-  TAK: "tak",
 }
 
 export function VärmepumpSektion({ state, updateState }: VärmepumpSektionProps) {
@@ -44,7 +25,7 @@ export function VärmepumpSektion({ state, updateState }: VärmepumpSektionProps
   return (
     <div className="space-y-6">
       <Alert>
-        <Thermometer className="h-4 w-4" />
+        <span className="text-lg">🌡️</span>
         <AlertDescription>
           <strong>Information:</strong>{" "}
           {state.kundTyp === "privat"
@@ -60,7 +41,7 @@ export function VärmepumpSektion({ state, updateState }: VärmepumpSektionProps
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Settings className="h-5 w-5" />
+            <span className="text-lg">⚙️</span>
             Installationsdetaljer
           </CardTitle>
         </CardHeader>
@@ -119,7 +100,7 @@ export function VärmepumpSektion({ state, updateState }: VärmepumpSektionProps
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Wrench className="h-5 w-5" />
+            <span className="text-lg">🔧</span>
             Extra utrustning och material
           </CardTitle>
         </CardHeader>

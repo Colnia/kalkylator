@@ -9,6 +9,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "latest",
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-select": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "jspdf": "latest",
@@ -17,7 +20,6 @@
     "next": "15.2.4",
     "react": "^19",
     "react-dom": "^19",
-    "react-router-dom": "latest",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
   },

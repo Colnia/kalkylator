@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { User, Building2 } from "lucide-react"
 
 interface KundSektionProps {
   state: any
@@ -16,7 +15,7 @@ export function KundSektion({ state, updateState }: KundSektionProps) {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          {state.kundTyp === "privat" ? <User className="h-5 w-5" /> : <Building2 className="h-5 w-5" />}
+          <span className="text-lg">{state.kundTyp === "privat" ? "👤" : "🏢"}</span>
           Kundinformation
         </CardTitle>
       </CardHeader>

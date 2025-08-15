@@ -3,9 +3,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
-import { MOMS, ROT_PROCENT, MAX_ROT, MATERIAL_PRISER, STANDARD_INSTALLATION } from "@/lib/constants"
+import { MOMS, MAX_ROT, MATERIAL_PRISER, STANDARD_INSTALLATION } from "@/lib/constants"
 import { formatPrice } from "@/lib/utils"
-import { Calculator, Receipt, Percent, Package } from "lucide-react"
+import { PDFGenerator } from "./pdf-generator"
 
 interface VärmepumpSummeringProps {
   state: any
@@ -61,7 +61,22 @@ export function VärmepumpSummering({ state }: VärmepumpSummeringProps) {
     kostnader.totalInklMoms = kostnader.totalExklMoms + kostnader.momsBelopp
 
     if (state.kundTyp === "privat") {
-      kostnader.rotAvdrag = Math.min(kostnader.totalArbetskostnad * ROT_PROCENT, MAX_ROT)
+      let schablonProcent = 0.65 // Default för luft/luft
+
+      const värmepumpstyp = state.värmepump?.model?.toLowerCase() || ""
+      if (värmepumpstyp.includes("berg") || värmepumpstyp.includes("mark")) {
+        schablonProcent = 0.4 // Bergvärmepump
+      } else if (värmepumpstyp.includes("luft/vatten") || värmepumpstyp.includes("luftvatten")) {
+        schablonProcent = 0.55 // Luft/vatten-värmepump
+      } else if (värmepumpstyp.includes("frånluft")) {
+        schablonProcent = 0.65 // Frånluftsvärmepump
+      } else {
+        schablonProcent = 0.65 // Luft/luft-värmepump (default)
+      }
+
+      const arbetskostnadInklMoms = kostnader.totalInklMoms * schablonProcent
+      const arbetskostnadExklMoms = arbetskostnadInklMoms / 1.25
+      kostnader.rotAvdrag = Math.min(arbetskostnadExklMoms * 0.5, MAX_ROT)
     }
 
     kostnader.total = kostnader.totalInklMoms - (kostnader.rotAvdrag || 0)
@@ -76,7 +91,7 @@ export function VärmepumpSummering({ state }: VärmepumpSummeringProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Calculator className="h-5 w-5" />
+            <span>🧮</span>
             Kostnadssummering
           </CardTitle>
         </CardHeader>
@@ -91,7 +106,7 @@ export function VärmepumpSummering({ state }: VärmepumpSummeringProps) {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Calculator className="h-5 w-5" />
+          <span>🧮</span>
           Kostnadssummering
         </CardTitle>
       </CardHeader>
@@ -99,7 +114,7 @@ export function VärmepumpSummering({ state }: VärmepumpSummeringProps) {
         {/* Materialkostnader */}
         <div>
           <h4 className="font-semibold mb-2 flex items-center gap-2">
-            <Package className="h-4 w-4" />
+            <span>📦</span>
             Materialkostnader
           </h4>
           <div className="space-y-1 text-sm">
@@ -114,7 +129,7 @@ export function VärmepumpSummering({ state }: VärmepumpSummeringProps) {
             {state.extraRörlängd > 0 && (
               <div className="flex justify-between">
                 <span>Extra rörlängd ({state.extraRörlängd}m):</span>
-                <span>{formatPrice(state.extraRörlängd * MATERIAL_PRISER.EXTRA_RÖRLÄNGD * (1 + MOMS))}</span>
+                <span>{formatPrice(state.extraRörlängd * MATERIAL_PRISER.EXTRA_RÖRLÄNGD)}</span>
               </div>
             )}
           </div>
@@ -125,7 +140,7 @@ export function VärmepumpSummering({ state }: VärmepumpSummeringProps) {
         {/* Arbetskostnader */}
         <div>
           <h4 className="font-semibold mb-2 flex items-center gap-2">
-            <Receipt className="h-4 w-4" />
+            <span>🧾</span>
             Arbetskostnader
           </h4>
           <div className="space-y-1 text-sm">
@@ -161,8 +176,8 @@ export function VärmepumpSummering({ state }: VärmepumpSummeringProps) {
             <>
               <div className="flex justify-between text-green-600">
                 <span className="flex items-center gap-1">
-                  <Percent className="h-4 w-4" />
-                  ROT-avdrag (50%):
+                  <span>💰</span>
+                  ROT-avdrag (schablon):
                 </span>
                 <span>-{formatPrice(kostnader.rotAvdrag)}</span>
               </div>
@@ -172,11 +187,17 @@ export function VärmepumpSummering({ state }: VärmepumpSummeringProps) {
                 <span className="text-green-600">{formatPrice(kostnader.total)}</span>
               </div>
               <Badge variant="secondary" className="bg-green-100 text-green-800">
-                ROT-avdrag tillämpat
+                ROT-avdrag enligt Skatteverkets schablon
               </Badge>
             </>
           )}
         </div>
+
+        {state.värmepump && (
+          <div className="pt-4 border-t">
+            <PDFGenerator state={state} type="värmepump" />
+          </div>
+        )}
       </CardContent>
     </Card>
   )

@@ -1,8 +1,10 @@
 "use client"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "@/components/ui/button"
 import { KostnadsKalkylator } from "@/components/kostnadskalkylator"
 import { HistorikVy } from "@/components/historik-vy"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -10,8 +12,17 @@ export default function Home() {
       <div className="container mx-auto px-4 py-8">
         <Card className="max-w-6xl mx-auto shadow-xl">
           <CardHeader className="text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg">
-            <CardTitle className="text-3xl font-bold">Företagsverktyg</CardTitle>
-            <p className="text-blue-100 mt-2">Professionell kostnadskalkylator för värmepumpar och reparationer</p>
+            <div className="flex justify-between items-center">
+              <div className="flex-1">
+                <CardTitle className="text-3xl font-bold">Företagsverktyg</CardTitle>
+                <p className="text-blue-100 mt-2">Professionell kostnadskalkylator för värmepumpar och reparationer</p>
+              </div>
+              <Link href="/admin">
+                <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+                  ⚙️ Admin
+                </Button>
+              </Link>
+            </div>
           </CardHeader>
           <CardContent className="p-6">
             <Tabs defaultValue="kalkylator" className="w-full">
